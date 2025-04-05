@@ -8,6 +8,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  row-gap: 30px;
 }
 
 #heading{
@@ -36,4 +37,26 @@
   width: 100px;
   background-color: white;
   border-radius: 15px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  color:rgb(66, 38, 159);
+  font-weight: 700;
+}
+
+
+#restart-btn{
+  height: 48px;
+  width: fit-content;
+  background-color: white;
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  color: black;
+  border: none;
+  padding: 0 10px 0 10px;
+  border-radius: 6px;
+  cursor: pointer;
 }
