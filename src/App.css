@@ -18,8 +18,8 @@
 }
 
 .game-board{
-  height: 400px;
-  width: 400px;
+  height: 350px;
+  width: 350px;
   background-color: rgba(195, 123, 168, 0.537);
   align-items: center;
   justify-content: center;
