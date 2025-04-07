@@ -69,10 +69,24 @@
 }
 
 
-@keyframes blink {
-    0% {background-color: yellow;}
-    50% {background-color: orange;}
-    100% {background-color: yellow;}
+@keyframes burst {
+    0% {
+      transform: scale(1);
+      background-color: rgba(0, 247, 255, 0.815);
+      box-shadow: 0 0 10px yellow;
+    }
+
+    50% {
+      transform: scale(1.2);
+      background-color: lavenderblush;
+      box-shadow: 0 0 20px rgba(212, 141, 210, 0.819);
+    }
+
+    100% {
+      transform: scale(1);
+      background-color: rgba(255, 0, 89, 0.822);
+      box-shadow: 0 0 10px red;
+    }
 }
 
 .winner{
@@ -87,5 +101,5 @@
   font-size: 32px;
   color:rgb(66, 38, 159);
   font-weight: 700;
-  animation: blink 1s ease-in-out infinite;
+  animation: burst 1.6s ease-in-out infinite;
 }
