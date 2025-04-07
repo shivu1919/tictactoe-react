@@ -3,7 +3,17 @@ import './App.css'
 
 function App() {
 
+  const[result, setResult] = useState('')
   const[player, setPlayer] = useState('O')
+  const[game, setGame] = useState(true)
+  const[click, setClick] = useState(0)
+
+  const disableClick = (id) =>{
+    console.log(id + " will not work now")
+    document.getElementById(id).style.pointerEvents ="none"
+    console.log(id)
+  }
+  
 
   const checkWinner = ()=>{
     const values = []
@@ -11,40 +21,82 @@ function App() {
       values[i]= document.getElementById(`cell${i}`).innerHTML
     }
     if(player==values[1]&&player==values[2]&&player==values[3]){
-      alert(player+ "is the winner")
+      setResult(player+" is winner")
+      document.getElementById('cell1').className='winner'
+      document.getElementById('cell2').className='winner'
+      document.getElementById('cell3').className='winner'
+      setGame(false)
     }
     else if(player==values[4]&&player==values[5]&&player==values[6]){
-      alert(player+ "is the winner")
+      setResult(player+" is winner")
+      document.getElementById('cell4').className='winner'
+      document.getElementById('cell5').className='winner'
+      document.getElementById('cell6').className='winner'
+      setGame(false)
     }
     else if(player==values[7]&&player==values[8]&&player==values[9]){
-      alert(player+ "is the winner")
+      setResult(player+" is winner")
+      document.getElementById('cell7').className='winner'
+      document.getElementById('cell8').className='winner'
+      document.getElementById('cell9').className='winner'
+      setGame(false)
     }
     else if(player==values[1]&&player==values[4]&&player==values[7]){
-      alert(player+ "is the winner")
+      setResult(player+" is winner")
+      document.getElementById('cell1').className='winner'
+      document.getElementById('cell4').className='winner'
+      document.getElementById('cell7').className='winner'
+      setGame(false)
     }
     else if(player==values[2]&&player==values[5]&&player==values[8]){
-      alert(player+ "is the winner")
+      setResult(player+" is winner")
+      document.getElementById('cell2').className='winner'
+      document.getElementById('cell5').className='winner'
+      document.getElementById('cell8').className='winner'
+      setGame(false)
     }
     else if(player==values[3]&&player==values[6]&&player==values[9]){
-      alert(player+ "is the winner")
+      setResult(player+" is winner")
+      document.getElementById('cell3').className='winner'
+      document.getElementById('cell6').className='winner'
+      document.getElementById('cell9').className='winner'
+      setGame(false)
     }
     else if(player==values[1]&&player==values[5]&&player==values[9]){
-      alert(player+ "is the winner")
+      setResult(player+" is winner")
+      document.getElementById('cell1').className='winner'
+      document.getElementById('cell5').className='winner'
+      document.getElementById('cell9').className='winner'
+      setGame(false)
     }
     else if(player==values[3]&&player==values[5]&&player==values[7]){
-      alert(player+ "is the winner")
+      setResult(player+" is winner")
+      document.getElementById('cell3').className='winner'
+      document.getElementById('cell5').className='winner'
+      document.getElementById('cell7').className='winner'
+      setGame(false)
+    }
+
+    else if(click>=8){
+      setResult('Game Drawn')
     }
   }
 
   const clickHandler = (cell)=>{
-    document.getElementById(cell).innerHTML=player
-    checkWinner()
-    if(player=='O'){
-      setPlayer('X')
+
+    if(game){
+      document.getElementById(cell).innerHTML=player
+      setClick(click+1)
+      disableClick(cell)
+      checkWinner()
+      if(player=='O'){
+        setPlayer('X')
+      }
+      else{
+        setPlayer('O')
+      }
     }
-    else{
-      setPlayer('O')
-    }
+    
   }
 
 
@@ -67,6 +119,8 @@ function App() {
               <div className="cell" id='cell8' onClick={()=>{clickHandler('cell8')}}></div>
               <div className="cell" id='cell9' onClick={()=>{clickHandler('cell9')}}></div>
           </div>
+
+          <p id='result'>{result}</p>
 
           <button onClick={()=>{window.location="/"}} id='restart-btn'>Restart</button>
       </div>
